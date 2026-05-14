@@ -1,4 +1,9 @@
+.vscode/
+
+# Env file
 .env
 
+
+# Notes and commands
 cmd.md
 notes.md
