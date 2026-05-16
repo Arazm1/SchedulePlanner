@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: projectone
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration: 86400000
+      
+
+server:
+  port: 3030
