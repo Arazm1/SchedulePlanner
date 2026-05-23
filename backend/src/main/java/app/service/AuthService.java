@@ -9,6 +9,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 
 import app.dto.LoginRequest;
+import app.dto.RegisterRequest;
 import app.entity.User;
 import app.repository.UserRepository;
 
@@ -43,5 +44,18 @@ public class AuthService {
             .withIssuedAt(new Date())
             .withExpiresAt(new Date(System.currentTimeMillis() + 86400000))
             .sign(Algorithm.HMAC256(SECRET));
+    }
+
+    public String register(RegisterRequest registerRequest){
+        if(userRepository.findByUsername(registerRequest.getUsername()).isPresent()){
+            throw new RuntimeException("Username already taken");
+        }
+
+        User user = new User();
+        user.setUsername(registerRequest.getUsername());
+        user.setEmail(registerRequest.getEmail());
+        user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+        userRepository.save(user);
+        return "New User registered successfully";
     }
 }
