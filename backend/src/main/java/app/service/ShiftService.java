@@ -87,7 +87,7 @@ public class ShiftService {
                                         .orElseThrow(() -> new RuntimeException("Shift not found with ID: " + shiftID));
 
         Company company = companyRepository.findById(companyID)
-                                            .orElseThrow(() -> new RuntimeException("Company not found with ID: " + companyId));
+                                            .orElseThrow(() -> new RuntimeException("Company not found with ID: " + companyID));
         
         shift.setShiftName(shiftName);
         shift.setShiftInfo(shiftInfo);
