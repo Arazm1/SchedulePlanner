@@ -1,6 +1,7 @@
 package app.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,11 @@ public class ShiftService {
             Company company = companyRepository.findById(companyID)
                 .orElseThrow(() -> new RuntimeException("Company not found with ID: " + companyID));
 
+            List<Shift> conflicts = shiftRepository.findOverlappingShifts(userID, startTime, endTime);
+            if(!conflicts.isEmpty()){
+                throw new RuntimeException("Shift conflicts with an existing shift at: " + conflicts.get(0).getCompany().getName());
+            }
+
 
             Shift shift = new Shift();
             shift.setShiftName(shiftName);
@@ -51,11 +57,46 @@ public class ShiftService {
             return shift;
 
         }
-        catch(Error e){
+        catch(Exception e){
             e.printStackTrace();
             return null;
         }
     }
 
-    
+    public List<Shift> getShiftsForUser(Integer userID){
+        return shiftRepository.findAllShiftsByUserId(userID);
+    }
+
+
+    public Shift deleteShift(Integer shiftID){
+        try{
+            Shift shift = shiftRepository.findById(shiftID).orElseThrow(() -> new RuntimeException("Shift not found with ID: " + shiftID));
+            
+            shiftRepository.delete(shift);
+            return shift;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Shift updateShift(Integer shiftID, String shiftName, String shiftInfo, String shiftNotes, LocalDateTime startTime, LocalDateTime endTime, Integer companyID){
+        
+        Shift shift = shiftRepository.findById(shiftID)
+                                        .orElseThrow(() -> new RuntimeException("Shift not found with ID: " + shiftID));
+
+        Company company = companyRepository.findById(companyID)
+                                            .orElseThrow(() -> new RuntimeException("Company not found with ID: " + companyId));
+        
+        shift.setShiftName(shiftName);
+        shift.setShiftInfo(shiftInfo);
+        shift.setShiftNotes(shiftNotes);
+        shift.setStartTime(startTime);
+        shift.setEndTime(endTime);
+        shift.setCompany(company);
+
+        shiftRepository.save(shift);
+        return shift;
+    }
 }
