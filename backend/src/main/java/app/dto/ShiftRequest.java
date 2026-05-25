@@ -2,6 +2,11 @@ package app.dto;
 
 import java.time.LocalDateTime;
 
+/**
+ * DTO for incoming Shift creation requests.
+ * 
+ * Captures the client-provided fields from the request body.
+ */
 public class ShiftRequest {
     private String shiftName;
     private String shiftInfo;
