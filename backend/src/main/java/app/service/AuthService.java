@@ -2,6 +2,7 @@ package app.service;
 
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,11 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final String SECRET = "your_secret_key";
+
+    @Value("${jwt.secret}")
+    private String secret;
+
+    //private final String SECRET = "your_secret_key";
 
     public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
@@ -43,7 +48,7 @@ public class AuthService {
             //.withClaim("role", user.getRole())
             .withIssuedAt(new Date())
             .withExpiresAt(new Date(System.currentTimeMillis() + 86400000))
-            .sign(Algorithm.HMAC256(SECRET));
+            .sign(Algorithm.HMAC256(secret));
     }
 
     public String register(RegisterRequest registerRequest){
