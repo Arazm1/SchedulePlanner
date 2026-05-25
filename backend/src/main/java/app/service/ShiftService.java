@@ -11,21 +11,18 @@ import app.entity.User;
 import app.repository.CompanyRepository;
 import app.repository.ShiftRepository;
 import app.repository.UserRepository;
-import app.repository.WorksRepository;
 
 @Service
 public class ShiftService {
 
     private final ShiftRepository shiftRepository;
     private final CompanyRepository companyRepository;
-    private final WorksRepository worksRepository;
     private final UserRepository userRepository;
 
     
-    public ShiftService(ShiftRepository shiftRepository, CompanyRepository companyRepository, WorksRepository worksRepository, UserRepository userRepository){
+    public ShiftService(ShiftRepository shiftRepository, CompanyRepository companyRepository, UserRepository userRepository){
         this.shiftRepository = shiftRepository;
         this.companyRepository = companyRepository;
-        this.worksRepository = worksRepository;
         this.userRepository = userRepository;
     }
 
