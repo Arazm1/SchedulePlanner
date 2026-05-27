@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { UserContext } from '../context/UserContext'; // Adjust path as needed
+import { UserContext } from '../contexts/UserContext'; // Adjust path as needed
 
 const Login = () => {
   const { handleLogin } = useContext(UserContext);

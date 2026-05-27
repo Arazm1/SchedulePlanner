@@ -14,7 +14,7 @@ import { useUserCommon } from '../hooks/common/apiHooks';
      const [loadingUser, setLoadingUser] = useState(true);
 
      const navigate = useNavigate();
-     //const location = useLocation();
+     const location = useLocation();
 
      
 

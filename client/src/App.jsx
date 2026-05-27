@@ -1,7 +1,12 @@
 import './App.css';
 import {BrowserRouter, Routes, Route} from 'react-router';
 
+import {UserProvider} from './contexts/UserContext';
+
+import Login from './views/Login';
+
 //Layouts
+/*
 import Layout from './components/Layout.jsx';
 import AdminLayout from './components/admin/AdminLayout.jsx';
 
@@ -36,20 +41,22 @@ import ReservationsAdmin from './views/admin/Reservations/Reservations.jsx';
 import AddMenu from './views/admin/Menus/AddMenu.jsx';
 import UsersAdminView from './views/admin/User/Users.jsx';
 import DiscountsAdmin from './views/admin/Discounts/Discounts.jsx';
-
+*/
 
 
 const App = () => {
   return (
-    <UserProvider>
-      <Routes>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <UserProvider>
+        <Routes>
 
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+          {/*<Route path="/" element={<Dashboard />} />*/}
+          <Route path="/login" element={<Login />} />
+          {/*<Route path="/register" element={<Register />} /> */}
 
-      </Routes>
-    </UserProvider>
+        </Routes>
+      </UserProvider>
+    </BrowserRouter>
   )
 }
 
