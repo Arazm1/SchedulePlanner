@@ -3,7 +3,7 @@ import { useUserContext } from "../hooks/contextHooks";
 import useForm from '../hooks/formHooks.js';
 import { useState } from "react";
 
-const Login2 = () => {
+const Login = () => {
 
     //const {postLogin} = useAuthentication();
     const {handleLogin} = useUserContext();
@@ -85,4 +85,4 @@ const Login2 = () => {
   );
 };
 
-export default Login2;
+export default Login;
