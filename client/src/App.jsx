@@ -3,7 +3,8 @@ import {BrowserRouter, Routes, Route} from 'react-router';
 
 import {UserProvider} from './contexts/UserContext';
 
-import Login from './views/Login';
+//import Login from './views/Login';
+import Login2 from './views/Login2';
 
 //Layouts
 /*
@@ -51,7 +52,7 @@ const App = () => {
         <Routes>
 
           {/*<Route path="/" element={<Dashboard />} />*/}
-          <Route path="/login" element={<Login />} />
+          <Route path="/login2" element={<Login2 />} />
           {/*<Route path="/register" element={<Register />} /> */}
 
         </Routes>
