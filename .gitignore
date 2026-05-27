@@ -1,7 +1,8 @@
 .vscode/
 
-# Env file
+# Env files
 .env
+client\.env.local
 
 
 # Notes and commands
