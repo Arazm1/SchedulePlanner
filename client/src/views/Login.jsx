@@ -7,7 +7,7 @@ const Login = () => {
 
     //const {postLogin} = useAuthentication();
     const {handleLogin} = useUserContext();
-    const [error, setError] = useState();
+    const [error, setError] = useState('');
 
     const initValues = {
         username: '',
