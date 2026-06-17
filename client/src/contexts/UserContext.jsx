@@ -1,6 +1,6 @@
  import {createContext, useEffect, useState} from 'react';
  //import { useAuthentication, useUser } from '../hooks/common/apiHooks';
- import { useAuthentication, useUser } from '../hooks/useAuth';
+ import { useAuthentication, useUser } from '../hooks/apiHooks';
  import {useLocation, useNavigate} from 'react-router';
 import { useUserCommon } from '../hooks/common/apiHooks';
 

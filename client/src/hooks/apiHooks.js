@@ -65,15 +65,82 @@ const useUser = () => {
       },
     };
 
-    const result = await fetchData(API_URL + '/users/me', fetchOptions);
+    const result = await fetchData(SERVER_URL + '/api/v1/users/me', fetchOptions);
     return { user: result };
   };
   return { getUserByToken }
 }
 
 
+const useShift = () => {
+  const getShifts = async (token) => {
+    try{
+        const fetchOptions = {
+          method: 'GET',
+          headers: {
+            'Authorization': 'Bearer ' + token,
+          }
+        };
+
+        const result = await fetchData(SERVER_URL + '/api/v1/shifts', fetchOptions)
+        return result
+      
+    } catch(error){
+      console.log('Error in getShifts: ', error.message)
+    }
+  };
+  
+
+
+  const postShift = async (data, token) => {
+    try {
+      const fetchOptions = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token,
+        },
+        body: JSON.stringify(data),
+      };
+
+      const result = await fetchData(SERVER_URL + '/api/v1/shifts', fetchOptions);
+      return result;
+    } catch (error) {
+      console.log('Error in postShift: ', error);
+    }
+  };
+
+  return { getShifts, postShift }
+}
+
+
+const useCompany = () => {
+
+  const getCompanies = async (token) => {
+    try{
+        const fetchOptions = {
+          method: 'GET',
+          headers: {
+            'Authorization': 'Bearer ' + token,
+          },
+        };
+
+        const result = await fetchData(SERVER_URL + '/api/v1/companies', fetchOptions)
+        return result
+      
+    } catch(error){
+      console.log('Error in getCompanies: ', error.message)
+    }
+  };
+
+  return { getCompanies }
+
+}
+
 
 export {
   useAuthentication,
   useUser,
+  useShift,
+  useCompany
 };

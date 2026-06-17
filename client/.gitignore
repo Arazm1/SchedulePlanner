@@ -41,3 +41,4 @@ dist-ssr
 /src/hooks/common/
 /src/contexts/LanguageContext.jsx
 src/components
+/src/views/Dashboard2.jsx

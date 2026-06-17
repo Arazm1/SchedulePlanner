@@ -22,7 +22,8 @@ public class AuthController {
     public AuthController(AuthService authService){
         this.authService = authService;
     }
-
+    
+    //@CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest){
         try{

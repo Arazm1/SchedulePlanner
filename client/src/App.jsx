@@ -3,47 +3,9 @@ import {BrowserRouter, Routes, Route} from 'react-router';
 
 import {UserProvider} from './contexts/UserContext';
 
+import Dashboard from './views/Dashboard';
 import Login from './views/Login';
 import Register from './views/Register';
-
-//Layouts
-/*
-import Layout from './components/Layout.jsx';
-import AdminLayout from './components/admin/AdminLayout.jsx';
-
-//Contexts
-import {UserProvider} from './contexts/UserContext';
-import {CartProvider} from './contexts/ShoppingCartContext.jsx';
-import {LanguageProvider} from "./contexts/LanguageContext.jsx";
-
-//Route Protections
-import ProtectedRoute from './components/ProtectedRoute.jsx';
-import ProtectedAdminRoute from './components/ProtectedAdminRoute.jsx';
-
-//Pages
-//All users
-import Home from './views/customer/Home.jsx';
-import Weeklist from './views/customer/Weeklist.jsx';
-import Giftcards from './views/customer/Giftcards.jsx';
-import Contacts from './views/customer/Contacts.jsx';
-
-//Logged in users
-import Profile from './views/customer/Profile.jsx';
-import ShoppingCart from './views/customer/ShoppingCart.jsx';
-
-//Admin
-import Dashboard from './views/admin/Dashboard.jsx';
-import Meals from './views/admin/Meals/Meals.jsx';
-import AddMeal from './views/admin/Meals/AddMeal.jsx';
-import Menus from './views/admin/Menus/Menus.jsx';
-import Orders from './views/admin/Orders/Orders.jsx';
-import GiftcardsAdmin from './views/admin/Giftcards/Giftcards.jsx';
-import ReservationsAdmin from './views/admin/Reservations/Reservations.jsx';
-import AddMenu from './views/admin/Menus/AddMenu.jsx';
-import UsersAdminView from './views/admin/User/Users.jsx';
-import DiscountsAdmin from './views/admin/Discounts/Discounts.jsx';
-*/
-
 
 const App = () => {
   return (
@@ -51,7 +13,7 @@ const App = () => {
       <UserProvider>
         <Routes>
 
-          {/*<Route path="/" element={<Dashboard />} />*/}
+          <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
