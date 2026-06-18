@@ -40,5 +40,5 @@ dist-ssr
 /src/hooks/admin/
 /src/hooks/common/
 /src/contexts/LanguageContext.jsx
-src/components
+src/components/Archive
 /src/views/Dashboard2.jsx
